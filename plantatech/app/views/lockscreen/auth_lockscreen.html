@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>PlantaTech - Pantalla de Bloqueo</title>
+
+  <!-- Estilos de proveedores -->
+  <link rel="stylesheet" href="src/css/vendors_css.css">
+  
+  <!-- Estilos -->
+  <link rel="stylesheet" href="src/css/style.css">
+  <link rel="stylesheet" href="src/css/skin_color.css">  
+
+</head>
+<body class="hold-transition dark-skin theme-primary bg-img" style="background-image: url(src/img/fondo-2.jpg)" data-overlay="5"></body>
+  
+  <div class="container h-p100">
+    <div class="row align-items-center justify-content-md-center h-p100">     
+      <div class="col-12">
+        <div class="row justify-content-center g-0">
+          <div class="col-lg-5 col-md-5 col-12">
+            <div class="bg-gray-800 rounded10 shadow-lg">
+              <div class="content-top-agile px-20 pt-40 pb-0">
+                <img src="#" alt="Imagen de usuario" class="bg-light rounded-circle load-avatar" style="width: 100px; height: 100px;">
+                <h2 class="text-primary fw-600 add-name-user"></h2>
+                <p class="mb-5 text-fade">Ingresa tu contraseña para recuperar tu sesión</p>  
+              </div>
+              <div class="px-40 pb-40 pt-20">
+                <form id="account_unlocked-form">
+                  <div class="form-group">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text"><i class="text-fade ti-lock"></i></span>
+                      <input type="password" id="user_pass_unlocked" class="form-control ps-15" placeholder="Contraseña" required>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 text-center">
+                      <button type="button" id="account_unlocked" class="btn btn-primary w-p100 mt-10" disabled>DESBLOQUEAR</button>
+                    </div>
+                  </div>
+                </form>    
+
+                <div class="text-center">
+                  <p class="mt-15 mb-0 text-fade">O <a href="#" id="user_changed" class="text-primary login-page" >Inicia sesión</a> con otro usuario</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <!-- JS de proveedores -->
+  <script src="src/js/vendors.min.js"></script>
+  <script src="src/js/pages/chat-popup.js"></script>
+  <script src="assets/icons/feather-icons/feather.min.js"></script>  
+  <script src="assets/vendor_components/sweetalert/sweetalert.min.js"></script>
+
+  <script type="module" src="js/lockscreen/app.js"></script>
+
+  
+
+
+</body>
+</html>

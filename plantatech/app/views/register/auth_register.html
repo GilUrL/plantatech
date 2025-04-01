@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>PlantaTech registro</title>
+    <!-- Vendors Style-->
+    <link rel="stylesheet" href="/plantatech/public/src/css/vendors_css.css" />
+
+    <!-- Style-->
+    <link rel="stylesheet" href="/plantatech/public/src/css/style.css" />
+    <link rel="stylesheet" href="/plantatech/public/src/css/skin_color.css" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <style>
+    #loadingSpinner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.3s ease;
+    }
+
+    .spinner-border {
+      width: 3rem;
+      height: 3rem;
+      border-width: 0.3rem;
+    }
+
+    .d-none {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .d-block {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+  <body
+    class="hold-transition dark-skin theme-primary bg-img"
+    style="background-image: url(src/img/fondo-2.jpg)" data-overlay="5">
+    <div class="container h-p100">
+      <div class="row align-items-center justify-content-md-center h-p100">
+        <div class="col-12">
+          <div class="row justify-content-center g-0">
+            <div class="col-lg-5 col-md-5 col-12">
+              <div class="bg-gray-800 rounded10 shadow-lg">
+                <div class="content-top-agile p-20 pb-0">
+                  <h2 class="text-primary fw-600">Comienza con Nosotros</h2>
+                  <p class="mb-0 text-fade">Registra una nueva cuenta</p>
+                </div>
+                <div class="p-40">
+                  <form id="add-users">
+                    <div class="form-group">
+                      <div class="input-group mb-3">
+                        <span class="input-group-text"
+                          ><i class="text-fade ti-user"></i
+                        ></span>
+                        <input
+                          type="text"
+                          id="user_name"
+                          class="form-control ps-15"
+                          placeholder="Nombre(s)"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group mb-3">
+                        <span class="input-group-text"
+                          ><i class="text-fade ti-user"></i
+                        ></span>
+                        <input
+                          type="text"
+                          id="user_last_name"
+                          class="form-control ps-15"
+                          placeholder="Apellidos"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group mb-3">
+                        <span class="input-group-text"
+                          ><i class="text-fade ti-email"></i
+                        ></span>
+                        <input
+                          type="email"
+                          id="user_email"
+                          class="form-control ps-15"
+                          placeholder="Correo Electrónico"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group mb-3">
+                        <span class="input-group-text"
+                          ><i class="text-fade ti-lock"></i
+                        ></span>
+                        <input
+                          type="password"
+                          id="user_pass"
+                          class="form-control ps-15"
+                          placeholder="Contraseña"
+                        />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="checkbox">
+                          <input type="checkbox" id="basic_checkbox_1" />
+                          <label for="basic_checkbox_1">
+                            Estoy de acuerdo con los
+                            <a href="#" class="text-primary">Términos</a>
+                          </label>
+                        </div>
+                      </div>
+                      <div id="loadingSpinner" class="d-none text-center">
+                        <div class="spinner-border text-primary" role="status">
+                          <span class="visually-hidden">Cargando...</span>
+                        </div>
+                      </div>
+                      <div
+                        class="g-recaptcha"
+                        data-sitekey="6LeLue4qAAAAAIvgWmiGC3tpDhcMx1hKgfl6F8tD"
+                      ></div>
+                      <!-- /.col -->
+                      <div class="col-12 text-center">
+                        <button
+                          type="button"
+                          id="user_registration"
+                          class="btn btn-primary w-p100 mt-10"
+                          disabled
+                        >
+                          REGISTRARSE
+                        </button>
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                  </form>
+                  <div class="text-center">
+                    <p class="mt-15 mb-0 text-fade">
+                      ¿Ya tienes una cuenta?
+                      <a href="#" id="btnLogin" class="text-primary ms-5"
+                        >Iniciar Sesión</a
+                      >
+                    </p>
+                  </div>
+
+                  <!-- <div class="text-center">
+									<p class="mt-20 text-fade">- Regístrate con -</p>
+									<p class="gap-items-2 mb-0">
+										<a class="waves-effect waves-circle btn btn-social-icon btn-circle btn-facebook-light" href="#">
+											<i class="fa fa-facebook"></i>
+										</a>
+										<a class="waves-effect waves-circle btn btn-social-icon btn-circle btn-twitter-light" href="#">
+											<i class="fa fa-twitter"></i>
+										</a>
+										<a class="waves-effect waves-circle btn btn-social-icon btn-circle btn-instagram-light" href="#">
+											<i class="fa fa-instagram"></i>
+										</a>
+									</p>    
+								</div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vendor JS -->
+    <script src="/plantatech/public/src/js/vendors.min.js"></script>
+    <script src="/plantatech/public/src/js/pages/chat-popup.js"></script>
+    <script src="/plantatech/public/assets/icons/feather-icons/feather.min.js"></script>
+    <script src="/plantatech/public/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
+    <!-- js customizado -->
+
+    <!-- js principal -->
+    <script type="module" src="/plantatech/public/js/register/app.js"></script>
+  </body>
+</html>

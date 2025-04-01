@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<title>PlantaTech</title>
+	<!-- Vendors Style-->
+	<script type="module" src="../../security/js/protections.js"></script>
+	<script src="../src/js/jquery.js"></script>
+	<link rel="stylesheet" href="../src/css/vendors_css.css" />
+	<!-- Style-->
+	<link rel="stylesheet" href="../src/css/style.css" />
+	<link rel="stylesheet" href="../src/css/skin_color.css" />
+	<link rel="stylesheet" href="../src/css/custom.css" />
+</head>
+<body class="hold-transition light-skin sidebar-mini theme-primary fixed sidebar-collapse">
+	<div class="wrapper">
+		<div id="loader"></div>
+		<header class="main-header">
+			<div class="d-flex align-items-center logo-box justify-content-start">
+				<a href="index.html" class="logo">
+					<!-- logo-->
+					<div class="logo-mini w-40">
+						<span class="light-logo"><img src="../src/img/logo-simbolo.png" alt="logo" /></span>
+						<span class="dark-logo"><img src="../src/img/logo-simbolo-claro.png" alt="logo" /></span>
+					</div>
+					<div class="logo-lg">
+						<span class="light-logo"><img src="../src/img/logo-letras-oscuras.png" alt="logo" /></span>
+						<span class="dark-logo"><img src="../src/img/logo-letras-claras.png" alt="logo" /></span>
+					</div>
+				</a>
+			</div>
+			<!-- Header Navbar -->
+			<nav class="navbar navbar-static-top">
+				<!-- Sidebar toggle button-->
+				<div class="app-menu">
+					<ul class="header-megamenu nav">
+						<li class="btn-group nav-item">
+							<a href="#" class="waves-effect waves-light nav-link push-btn btn-primary-light"
+								data-toggle="push-menu" role="button">
+								<i data-feather="menu"></i>
+							</a>
+						</li>
+						<li class="btn-group d-lg-inline-flex d-none">
+							<div class="app-menu">
+								<div class="search-bx mx-5">
+									<form>
+										<div class="input-group">
+											<input type="search" class="form-control" placeholder="Buscar" />
+											<div class="input-group-append">
+												<button class="btn" type="submit" id="button-addon3">
+													<i class="icon-Search"><span class="path1"></span><span
+															class="path2"></span></i>
+												</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+
+				<div class="navbar-custom-menu r-side">
+					<ul class="nav navbar-nav">
+						<li class="dropdown notifications-menu btn-group">
+							<label class="switch">
+								<a class="waves-effect waves-light btn-primary-light svg-bt-icon">
+									<input type="checkbox" data-mainsidebarskin="toggle"
+										id="toggle_left_sidebar_skin" />
+									<span class="switch-on"><i data-feather="moon"></i></span>
+									<span class="switch-off"><i data-feather="sun"></i></span>
+								</a>
+							</label>
+						</li>
+						<li class="dropdown notifications-menu btn-group">
+							<a href="#" class="waves-effect waves-light btn-primary-light svg-bt-icon"
+								data-bs-toggle="dropdown" title="Notifications">
+								<i data-feather="bell"></i>
+								<div class="pulse-wave"></div>
+							</a>
+							<ul class="dropdown-menu animated bounceIn">
+								<li class="header">
+									<div class="p-20">
+										<div class="flexbox">
+											<div>
+												<h4 class="mb-0 mt-0">Notificaciones</h4>
+											</div>
+											<div>
+												<a href="#" class="text-danger">Limpiar</a>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<ul class="menu sm-scrol">
+										<li>
+											<a href="#">
+												<i class="fa fa-users text-info"></i> Curabitur id
+												eros quis nunc suscipit blandit.
+											</a>
+										</li>
+									</ul>
+								</li>
+								<li class="footer">
+									<a href="#">Ver todos</a>
+								</li>
+							</ul>
+						</li>
+
+						<li class="btn-group nav-item d-xl-inline-flex d-none">
+							<a href="#" data-provide="fullscreen"
+								class="waves-effect waves-light nav-link btn-primary-light svg-bt-icon"
+								title="Full Screen">
+								<i data-feather="maximize"></i>
+							</a>
+						</li>
+
+						<!-- User Account-->
+						<li class="dropdown user user-menu">
+							<a href="#"
+								class="waves-effect waves-light dropdown-toggle w-auto l-h-12 bg-transparent p-0 no-shadow"
+								title="User" data-bs-toggle="modal" data-bs-target="#quick_user_toggle">
+								<img src="../../../images/avatar/avatar-13.png"
+									class="avatar rounded-circle bg-primary-light h-40 w-40" alt="" />
+							</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+
+		<aside class="main-sidebar">
+			<!-- sidebar-->
+			<section class="sidebar position-relative">
+				<div class="multinav">
+					<div class="multinav-scroll" style="height: 97%">
+						<!-- sidebar menu-->
+						<ul class="sidebar-menu" data-widget="tree">
+							<li>
+								<a href="#" class="index"><i data-feather="home"></i><span>Dashboard</span></a>
+							</li>
+							<li class="treeview">
+								<a href="#">
+									<i data-feather="headphones"></i>
+									<span>Documentacion</span>
+									<span class="pull-right-container">
+										<i class="fa fa-angle-right pull-right"></i>
+									</span>
+								</a>
+								<ul class="treeview-menu">
+									<li>
+										<a href="#"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Soporte</a>
+									</li>
+									<li>
+										<a href="#"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Instrucciones</a>
+									</li>
+								</ul>
+							</li>
+							<li class="treeview">
+								<a href="#">
+									<i data-feather="pie-chart"></i>
+									<span>Gestionar</span>
+									<span class="pull-right-container">
+										<i class="fa fa-angle-right pull-right"></i>
+									</span>
+								</a>
+								<ul class="treeview-menu">
+									<li> 
+										<a href="#" class="pots-page"><i class="icon-Commit"><span
+													class="path1"></span><span class="path2"></span></i>Macetas</a>
+									</li>
+									<li>
+										<a href="#" class="alert-page"><i class="icon-Commit"><span
+													class="path1"></span><span class="path2"></span></i>Alertas</a>
+									</li>
+								</ul>
+							</li>
+							<li class="treeview">
+								<a href="#">
+									<i data-feather="grid"></i>
+									<span>Cuenta</span>
+									<span class="pull-right-container">
+										<i class="fa fa-angle-right pull-right"></i>
+									</span>
+								</a>
+								<ul class="treeview-menu">
+									<li>
+										<a href="#" class="perfil-page"><i class="icon-Commit"><span
+													class="path1"></span><span class="path2"></span></i>Perfil</a>
+									</li>
+									<li>
+										<a href="#" class="security-page"><i class="icon-Commit"><span
+													class="path1"></span><span class="path2"></span></i>Seguridad</a>
+									</li>
+								</ul>
+							</li>
+							<!-- Autenticaciones -->
+							<li class="treeview">
+								<a href="#">
+									<i data-feather="lock"></i>
+									<span>Authentication</span>
+									<span class="pull-right-container">
+										<i class="fa fa-angle-right pull-right"></i>
+									</span>
+								</a>
+								<ul class="treeview-menu">
+									<li>
+										<a href="#" id="user_logout"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Cerrar Sesion</a>
+									</li>
+									<li>
+										<a href="#" id="account_locked"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Bloquear</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+		</aside>
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<div class="container-full">
+				<!-- Alertas y macetas  -->
+				<section class="content">
+					<div class="row">
+						<div class="col-xxl-3 col-xl-6 col-lg-6 col-12">
+							<div class="box pull-up ">
+								<div class="box-body">
+									<div class=" align-items-center mb-15 justify-content-between">
+										<i class="ion ion-leaf text-info fs-30"></i>
+										<div>
+											<h3 class="fw-500">0</h3>
+											<h4 href="#" class="hover-info mb-1">Macetas Registradas</h4>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xxl-3 col-xl-6 col-lg-6 col-12">
+							<div class="box pull-up ">
+								<div class="box-body">
+									<div class=" align-items-center mb-15 justify-content-between">
+										<i class="ion ion-alert text-warning fs-30"></i>
+										<div>
+											<h3 class="fw-500">0</h3>
+											<h4 href="#" class="hover-info mb-1">Alertas Activas</h4>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Graficas -->
+                    <div class="row">
+                        <div class="col-md-12">
+                          <div class="box">
+                            <section class="cd-horizontal-timeline">
+                                <div class="timeline">
+                                    <div class="events-wrapper">
+                                        <div class="events">
+                                            <ol>
+                                                <li><a href="#0" data-date="16/01/2021" class="selected">16 Jan</a></li>
+                                            </ol> <span class="filling-line" aria-hidden="true"></span> </div>
+                                    </div>
+                                    <!-- .events-wrapper -->
+                                    <ul class="cd-timeline-navigation">
+                                        <li><a href="#0" class="prev inactive">Prev</a></li>
+                                        <li><a href="#0" class="next">Next</a></li>
+                                    </ul>
+                                </div>
+                                <!-- .timeline -->
+                                <div class="events-content">
+                                    <ol>
+                                        <li class="selected" data-date="16/01/2021">
+                                            <h3><img class="img-responsive bg-light rounded pull-left me-20 mb-10" width="60" alt="user" src="../../../images/avatar/avatar-1.png"> Horizontal Timeline<br/><small class="text-fade">January 16th, 2021</small></h3>
+                                            <hr class="mt-30 mb-20">
+                                            <p class="pb-20 text-fade"> <br>
+                                                <button class="btn btn-primary btn-outline mt-20">Read more</button>
+                                            </p>
+                                        </li>
+                                       
+                                    </ol>
+                                </div>
+                            </section>
+                          </div>          
+                        </div>
+                        <!-- /.col -->
+                      </div>
+				</section>
+			</div>
+		</div>
+			<footer class="main-footer bt-1">
+				<div class="pull-right d-none d-sm-inline-block">
+					<ul
+						class="nav nav-primary nav-dotted nav-dot-separated justify-content-center justify-content-md-end">
+						<li class="nav-item">
+							<a class="nav-link" href="#" target="_blank"></a>
+						</li>
+					</ul>
+				</div>
+				&copy;
+				<script>
+					document.write(new Date().getFullYear());
+				</script>
+				<a href="#">PlantaTech</a>.
+				All Rights Reserved.
+			</footer>
+			<div class="modal modal-right fade" id="quick_user_toggle" tabindex="-1">
+				<div class="modal-dialog">
+					<div class="modal-content slim-scroll3">
+						<div class="modal-body p-30 bg-white">
+							<div class="d-flex align-items-center mb-15 justify-content-between pb-30">
+								<h4 class="m-0">
+									User Profile
+									<small class="text-fade fs-12 ms-5">12 messages</small>
+								</h4>
+								<a href="#" class="btn btn-icon btn-danger-light btn-sm no-shadow"
+									data-bs-dismiss="modal">
+									<span class="fa fa-close"></span>
+								</a>
+							</div>
+							<div>
+								<div class="d-flex flex-row">
+									<div class="">
+										<img src="../../../images/avatar/avatar-13.png" alt="user"
+											class="rounded bg-danger-light w-150" width="100" />
+									</div>
+									<div class="ps-20">
+										<h5 class="mb-0">Nil Yeager</h5>
+										<p class="my-5 text-fade">Manager</p>
+										<a href="mailto:dummy@gmail.com"><span
+												class="icon-Mail-notification me-5 text-success"><span
+													class="path1"></span><span class="path2"></span></span>
+											dummy@gmail.com</a>
+										<button class="btn btn-success-light btn-sm mt-5">
+											<i class="ti-plus"></i> Follow
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="dropdown-divider my-30"></div>
+							<div>
+								<div class="d-flex align-items-center mb-30">
+									<div class="me-15 bg-success-light h-50 w-50 l-h-60 rounded text-center">
+										<span class="icon-Group-chat fs-24"><span class="path1"></span><span
+												class="path2"></span></span>
+									</div>
+									<div class="d-flex flex-column fw-500">
+										<a href="setting.html" class="text-dark hover-success mb-1 fs-16">Settings</a>
+										<span class="text-fade">Accout Settings</span>
+									</div>
+								</div>
+							</div>
+							<div class="dropdown-divider my-30"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="control-sidebar-bg"></div>
+		</div>
+		<!-- Superposición de contenido de página-->
+		<script type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js"></script>
+		<!-- Vendor JS -->
+		<script src="../src/js/vendors.min.js"></script>
+		<script src="../../../assets/icons/feather-icons/feather.min.js"></script>
+		<script src="../../../assets/vendor_components/chart.js-master/Chart.min.js"></script>
+        <script src="../../../assets/vendor_components/horizontal-timeline/js/horizontal-timeline.js"></script>
+		<!-- JS DE PLANTILLA-->
+		 <script src="../src/js/demo.js"></script>
+		<script src="../src/js/dark-mode.js"></script>
+		<script src="../src/js/template.js"></script>
+
+		<!-- JS CUSTOM -->
+		 <script type="module" src="../js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Confirmacion de cuenta</title>
+
+    <!-- Vendors Style-->
+    <link rel="stylesheet" href="/plantatech/public/src/css/vendors_css.css" />
+
+    <!-- Style-->
+    <link rel="stylesheet" href="/plantatech/public/src/css/style.css" />
+    <link rel="stylesheet" href="/plantatech/public/src/css/skin_color.css" />
+  </head>
+  <style>
+    .spinner-border {
+      width: 3rem;
+      height: 3rem;
+      border-width: 0.3rem;
+    }
+    .card {
+      border-radius: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: rgb(63, 52, 83) !important;
+    }
+    .d-none {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .d-block {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+  <body
+    class="hold-transition dark-skin bg-img theme-primary"
+    style="
+      background-image: url();
+      background-repeat: repeat-y;
+      background-position: bottom right;
+    "
+  >
+    <div class="container h-p100">
+      <div class="row justify-content-md-center align-items-center h-p100">
+        <div class="col-12">
+          <div class="box bg-transparent no-border no-shadow">
+            <div class="box-body text-center">
+              <div
+                class="row justify-content-md-center align-items-center h-p100"
+              >
+                <div class="col-md-5 col-12">
+                  <div class="text-start">
+                    <img
+                      src="src/img/logo-letras-claras.png"
+                      class="mb-20"
+                      alt=""
+                    />
+                    <div
+                      class="card p-4 text-center"
+                      style="max-width: 400px; width: 100%"
+                    >
+                      <div id="spinner" class="my-4">
+                        <div class="spinner-border text-primary" role="status">
+                          <span class="visually-hidden">Verificando...</span>
+                        </div>
+                        <p class="mt-3">Verificando tu cuenta...</p>
+                      </div>
+                      <div id="mensaje" class="d-none"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Vendor JS -->
+    <script src="/plantatech/public/src/js/vendors.min.js"></script>
+    <script src="/plantatech/public/src/js/pages/chat-popup.js"></script>
+    <script src="/plantatech/public/assets/icons/feather-icons/feather.min.js"></script>
+    <script src="/plantatech/public/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
+
+    <!-- JS CUSTOM -->
+    <script src="/plantatech/public/js/register/account-verify.js"></script>
+  </body>
+</html>
