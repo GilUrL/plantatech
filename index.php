@@ -1,4 +1,4 @@
 <?php
-header("Location: /plantatech/app/login");
+header("Location: /app/login");
 exit();
 ?>
