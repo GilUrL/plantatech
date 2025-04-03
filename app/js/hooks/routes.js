@@ -1,21 +1,24 @@
-$('.index').on('click', function(){
+// routes.js (versión corregida)
+$(document).on('click', '.index', function() {
     location.href = 'panel';
-})
-$('.pots-page').on('click', function(){
+});
+
+$(document).on('click', '.pots-page', function() {
     location.href = 'pots';
-})
-$('.alert-page').on('click', function(){
+});
+
+$(document).on('click', '.alert-page', function() {
     location.href = 'pots-alert';
-})
-$('.alert-page').on('click', function(){
-    location.href = 'pots-alert';
-})
-$('.perfil-page').on('click', function(){
+});
+
+$(document).on('click', '.perfil-page', function() {
     location.href = 'profile';
-})
-$('.security-page').on('click', function(){
+});
+
+$(document).on('click', '.security-page', function() {
     location.href = 'account-security';
-})
-$('.login-page').on('click', function(){
+});
+
+$(document).on('click', '.login-page', function() {
     location.href = 'login';
-})
+});

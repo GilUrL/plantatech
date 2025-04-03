@@ -1,6 +1,7 @@
 Options -Indexes
 RewriteEngine On
 RewriteBase /
+RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ [NC]
 
 # Redirigir /login a /app/views/login/auth_login.html
 RewriteRule ^login/?$ app/views/login/auth_login.html [L]
@@ -10,7 +11,7 @@ RewriteRule ^register/?$ app/views/register/auth_register.html [L]
 
 # Otras reglas ajustadas
 RewriteRule ^confirm-email/?$ app/views/login/confirm-email.html [L]
-RewriteRule ^verify/?$ app/views/register/confirmation.html [L]
+RewriteRule ^verify/?$ app/views/register/confirmation.html [L,QSA]
 RewriteRule ^password-reset/?$ app/views/password-reset/auth_user_pass_reset.html [L]
 RewriteRule ^restore-account/?$ app/views/password-reset/auth_user_pass.html [L]
 RewriteRule ^account-lock/?$ app/views/lockscreen/auth_lockscreen.html [L]
