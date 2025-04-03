@@ -6,20 +6,37 @@ require_once './assets/PHPMailer/src/Exception.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+function loadEnv($path) {
+    if (!file_exists($path)) {
+        return;
+    }
+    $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        if (strpos(trim($line), '#') === 0) {
+            continue; // Ignorar comentarios
+        }
+        list($key, $value) = explode('=', $line, 2);
+        putenv("$key=$value");
+    }
+}
+
+loadEnv(__DIR__ . '/.env');
+
 function verifAcc($destino, $token, $name)
 {
     try {
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
+        $mail->Host = getenv('SMTP_HOST');  
         $mail->SMTPAuth = true;
         $mail->Port = 587;
-        $mail->Username = 'email.plantatech@gmail.com';
-        $mail->Password = 'bxrk kizn ofdr ftza';
-
-        $mail->setFrom('email.plantatech@gmail.com', 'PlantaTech');
+        $mail->Username = getenv('SMTP_USER');  
+        $mail->Password = getenv('SMTP_PASS');  
+        $mail->SMTPSecure = getenv('SMTP_SECURE');  
+        $mail->Port = getenv('SMTP_PORT');  
+        $mail->setFrom(getenv('SMTP_USER'), 'PlantaTech');
         $mail->addAddress($destino, 'Destinatario');
-
+        $urlVerificacion = "http://localhost/plantatech/public/verify/?request=verify_acount&token=" . urlencode($token);
         // Contenido del correo
         $mail->isHTML(true);
         $mail->Subject = 'Verificar Cuenta';
@@ -120,7 +137,7 @@ function verifAcc($destino, $token, $name)
                                         <table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
                                                 <td align="center" style="border-radius: 3px;" bgcolor="#4d7cff">
-                                                    <a href="http://localhost/plantatech/public/verify/?request=verify_acount&token={$token}" target="_blank" style="font-size: 18px; font-family: 'Poppins', sans-serif; color: #ffffff; text-decoration: none; padding: 12px 50px; border-radius: 5px; border: 1px solid #4d7cff; display: inline-block;">Confirmar Cuenta</a>
+                                                    <a href="$urlVerificacion" target="_blank" style="font-size: 18px; font-family: 'Poppins', sans-serif; color: #ffffff; text-decoration: none; padding: 12px 50px; border-radius: 5px; border: 1px solid #4d7cff; display: inline-block;">Confirmar Cuenta</a>
                                                 </td>
                                             </tr>
                                         </table>
@@ -213,7 +230,7 @@ function changePass($destino, $token, $name)
         $mail->Subject = 'Cambios en su cuenta';
         $mail->CharSet = 'UTF-8';
 
-        $URL = "";
+        $URL = "http://localhost/plantatech/public/password-reset?token=" . urlencode($token);
         $mail->Body = <<<HTML
 
 <!DOCTYPE html>
@@ -336,7 +353,7 @@ function changePass($destino, $token, $name)
                       <td bgcolor="#293146" align="center" style="padding: 20px 30px 30px 30px;">
                         <table border="0" cellspacing="0" cellpadding="0">
                           <tr>
-							  <td align="center" style="border-radius: 3px;" bgcolor="#4d7cff"><a href="http://localhost/plantatech/public/password-reset?token={$token}" target="_blank" style="font-size: 18px; font-family: 'Poppins', sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 12px 50px; border-radius: 5px; border: 1px solid #4d7cff; display: inline-block;">Restablecer</a></td>
+							  <td align="center" style="border-radius: 3px;" bgcolor="#4d7cff"><a href="$URL" target="_blank" style="font-size: 18px; font-family: 'Poppins', sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 12px 50px; border-radius: 5px; border: 1px solid #4d7cff; display: inline-block;">Restablecer</a></td>
                           </tr>
                         </table>
                       </td>
