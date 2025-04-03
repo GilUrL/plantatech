@@ -3,7 +3,7 @@ $(document).ready(function() {
     const token = urlParams.get('token');
  
     if (token) {
-        $.getJSON(`http://localhost/apiplantatech/api/?request=verify_acount&token=${token}`, function(data) {
+        $.getJSON(`php/api/?request=verify_acount&token=${token}`, function(data) {
             $('#spinner').addClass('d-none');
             $('#mensaje').removeClass('d-none');
 
