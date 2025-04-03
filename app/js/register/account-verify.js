@@ -5,7 +5,7 @@ $(document).ready(function() {
         location.href = '/app/login';
     });
     if (token) {
-        $.getJSON(`/app/php/api/?request=verify_acount&token=${token}`, function(data) {
+        $.getJSON(`/app/php/api/index.php?request=verify_acount&token=${token}`, function(data) {
             $('#spinner').addClass('d-none');
             $('#mensaje').removeClass('d-none');
 
@@ -22,7 +22,8 @@ $(document).ready(function() {
                     <a href="#" class="btn btn-secondary mt-3 login-page">Volver al inicio</a>
                 `);
             }
-        }).fail(function() {
+        }).fail(function(jqXHR) {
+            console.error("Error:", jqXHR.status, "URL:", jqXHR.responseURL);
             $('#spinner').addClass('d-none');
             $('#mensaje').removeClass('d-none').html(`
                 <h3 class="text-danger mb-3">Error inesperado</h3>
