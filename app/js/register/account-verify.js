@@ -5,7 +5,7 @@ $(document).ready(function() {
         location.href = '/app/login';
     });
     if (token) {
-        $.getJSON(`php/api/?request=verify_acount&token=${token}`, function(data) {
+        $.getJSON(`/app/php/api/?request=verify_acount&token=${token}`, function(data) {
             $('#spinner').addClass('d-none');
             $('#mensaje').removeClass('d-none');
 
