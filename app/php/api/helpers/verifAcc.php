@@ -36,7 +36,7 @@ function verifAcc($destino, $token, $name)
         $mail->Port = getenv('SMTP_PORT');  
         $mail->setFrom(getenv('SMTP_USER'), 'PlantaTech');
         $mail->addAddress($destino, 'Destinatario');
-        $urlVerificacion = "http://localhost/plantatech/public/verify/?request=verify_acount&token=" . urlencode($token);
+        $urlVerificacion = "https://panel.plantatech.cloud/app/verify/?request=verify_acount&token=" . urlencode($token);
         // Contenido del correo
         $mail->isHTML(true);
         $mail->Subject = 'Verificar Cuenta';
@@ -125,7 +125,7 @@ function verifAcc($destino, $token, $name)
                     <!-- COPY -->
                     <tr>
                         <td bgcolor="#293146" align="left" style="padding: 10px 30px 10px 30px; color: #b4b7bc; font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 400; line-height: 25px; text-align: center;">
-                            <p style="margin: 0;">Estamos emocionados de que empieces. Primero, necesitas confirmar tu cuenta. Solo presiona el botón de abajo.</p>
+                            <p style="margin: 0;">¡Nos alegra mucho tenerte con nosotros! Para comenzar, solo necesitas confirmar tu cuenta. Simplemente haz clic en el botón de abajo y estarás listo para empezar.</p>
                         </td>
                     </tr>
                     <!-- BULLETPROOF BUTTON -->
