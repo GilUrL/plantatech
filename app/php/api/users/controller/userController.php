@@ -67,7 +67,7 @@ class UserController extends UserModel
     {
         try {
             $recaptchaResponse = $this->recaptcha;
-            $secret = '6LeLue4qAAAAALgAPS9g1ryJtlJwOhUbBfw-5CjO';
+            $secret = '6LcPRQgrAAAAAJzLj1DdehwhoiM37rlHtNOauXiz';
             $url = 'https://www.google.com/recaptcha/api/siteverify';
             $data = [
                 'secret' => $secret,
