@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>PlantaTech registro</title>
+    <title>PT | registro</title>
     <!-- Vendors Style-->
     <link rel="stylesheet" href="src/css/vendors_css.css" />
 
@@ -102,17 +102,14 @@
                     </div>
                     <div class="form-group">
                       <div class="input-group mb-3">
-                        <span class="input-group-text"
-                          ><i class="text-fade ti-lock"></i
-                        ></span>
-                        <input
-                          type="password"
-                          id="user_pass"
-                          class="form-control ps-15"
-                          placeholder="Contraseña"
-                        />
+                        <span class="input-group-text"><i class="text-fade ti-lock"></i></span>
+                        <input type="password" id="user_pass" class="form-control ps-15" placeholder="Contraseña" required>
+                        <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                          👁
+                        </button>
                       </div>
                     </div>
+                    
                     <div class="row">
                       <div class="col-12">
                         <div class="checkbox">
@@ -129,9 +126,12 @@
                         </div>
                       </div>
                       <div
-                        class="g-recaptcha"
-                        data-sitekey="6LcPRQgrAAAAAJX-hKC1FLjK5PSkP90vcl30ZG73"
-                      ></div>
+                      class="g-recaptcha"
+                      data-sitekey="6LcPRQgrAAAAAJX-hKC1FLjK5PSkP90vcl30ZG73"
+                      data-callback="onCaptchaSuccess"
+                      data-expired-callback="onCaptchaExpired"
+                    ></div>
+                    
                       <!-- /.col -->
                       <div class="col-12 text-center">
                         <button
@@ -186,5 +186,16 @@
 
     <!-- js principal -->
     <script type="module" src="js/register/app.js"></script>
+    <script>
+      const togglePassword = document.getElementById('togglePassword');
+      const passwordInput = document.getElementById('user_pass');
+    
+      togglePassword.addEventListener('click', () => {
+        const isPassword = passwordInput.type === 'password';
+        passwordInput.type = isPassword ? 'text' : 'password';
+        togglePassword.textContent = isPassword ? '🙈' : '👁';
+      });
+    </script>
+    
   </body>
 </html>

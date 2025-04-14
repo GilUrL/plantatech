@@ -121,7 +121,7 @@ class UserController extends UserModel
                     "user_email" => $login['user_email']
                 ];
             } else {
-                $response = ["status" => false, "msg" => $login["msg"], "error" => true];
+                $response = ["status" => false, "msg" => $login["msg"], "token"=>$login["token"]??false];
             }
     
             return convertirJSON($response);

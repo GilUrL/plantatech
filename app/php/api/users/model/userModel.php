@@ -180,7 +180,7 @@ class UserModel extends DatabaseDB
             }
             $validateStatus = $this->validateStatus();
             if (!$validateStatus) {
-                return ["status" => false, "msg" => "No se ha confirmado su cuenta"];
+                return ["status" => false, "msg" => "No se ha confirmado su cuenta","token" =>true];
             }
             $sql = "SELECT cod_user, first_name, email, `password` FROM user WHERE email = :email";
             $execute = $this->connBD()->prepare($sql);

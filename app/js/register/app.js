@@ -1,6 +1,6 @@
 import {getInputValues} from './hooks/getvalues.js';
 import {registerUser} from './requests.js';
-import {regex, cssRegex} from './hooks/regex.js';
+import {regex, cssRegex, checkFormAndCaptcha} from './hooks/regex.js';
 $('#user_registration').on('click', function () {
     let data = getInputValues();
     let recaptchaResponse = $("#g-recaptcha-response").val();
@@ -9,13 +9,14 @@ $('#user_registration').on('click', function () {
         localStorage.setItem("user_email", data.user_email);
     }
     registerUser(data);
+    checkFormAndCaptcha();
 });
 $(document).on('keyup change', '#add-users input', function () {
     let input = $(this);
     let value = input.val().trim();
     let isValid = regex(input.attr('id'), value);
-    let allValid = cssRegex(isValid, input, value);
-    $('#user_registration').prop('disabled', !allValid);
+    cssRegex(isValid, input, value);
+    checkFormAndCaptcha();
 });
 
 $('#btnLogin').on('click', function(){

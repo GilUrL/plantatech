@@ -6,10 +6,12 @@ $(function () {
 });
 $('#user_login').on('click', function () {
     let data = getInputValue();
-    user_login(data);
+
     regex();
+    user_login(data);
     delValues();
-}); 
+});
+ 
 $('#password-reset').on('click', function () {
     window.location.href='restore-account'
 });

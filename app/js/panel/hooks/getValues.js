@@ -1,5 +1,5 @@
+const cod_user = localStorage.getItem('cod_user');
 export const getRegisterPots = () =>{
-    let cod_user = localStorage.getItem('cod_user');
     let data = {
         "name_pot": $('#name-pot').val().trim(),
         "location_pot": $('#location-pot').val().trim(),
@@ -8,7 +8,6 @@ export const getRegisterPots = () =>{
     return data;
 }
 export const getUpdatePots = () =>{
-    let cod_user = localStorage.getItem('cod_user');
     let data = {
         "name_pot": $('#update-name-pot').val().trim(),
         "location_pot": $('#update-location-pot').val().trim(),
@@ -30,7 +29,6 @@ export const setValuesDefault = (button) =>{
     $('#Identifier').val($(button).data("identifier"));
 }
 export const getReadingPots = () =>{
-    let cod_user = localStorage.getItem('cod_user');
     let data = {
         "cod_user": cod_user
     }
@@ -47,7 +45,6 @@ export const configValues = (button) =>{
 }
 
 export const user_data = () =>{
-    let cod_user = localStorage.getItem('cod_user');
     let data = {
         "cod_user": cod_user
     }

@@ -19,7 +19,7 @@ export const user_login = (data) => {
                     setTimeout(() => {
                         window.location.href = 'panel';
                     }, 100);
-                } else if (respuesta.error === true) {
+                } else if (respuesta.token === false) {
                     forgotPass(respuesta);
                 } else {
                     error(respuesta);

@@ -216,21 +216,20 @@ function changePass($destino, $token, $name)
     try {
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
+        $mail->Host = getenv('SMTP_HOST');  
         $mail->SMTPAuth = true;
         $mail->Port = 587;
-        $mail->Username = 'email.plantatech@gmail.com';
-        $mail->Password = 'bxrk kizn ofdr ftza';
-
-        $mail->setFrom('email.plantatech@gmail.com', 'PlantaTech');
+        $mail->Username = getenv('SMTP_USER');  
+        $mail->Password = getenv('SMTP_PASS');  
+        $mail->SMTPSecure = getenv('SMTP_SECURE');  
+        $mail->Port = getenv('SMTP_PORT');  
+        $mail->setFrom(getenv('SMTP_USER'), 'PlantaTech');
         $mail->addAddress($destino, 'Destinatario');
-
+        $URL = "https://panel.plantatech.cloud/app/password-reset?token=" . urlencode($token);
         // Contenido del correo
         $mail->isHTML(true);
         $mail->Subject = 'Cambios en su cuenta';
         $mail->CharSet = 'UTF-8';
-
-        $URL = "http://localhost/plantatech/public/password-reset?token=" . urlencode($token);
         $mail->Body = <<<HTML
 
 <!DOCTYPE html>

@@ -16,7 +16,7 @@ export const userData = () =>{
     return data;
 }
 
-export const delValues = () =>{
-    $('#user_email_login').val("")
-    $('#user_pass_login').val("")
+export const delValues = () => {
+    $('#user_email_login').val("").removeClass("is-valid is-invalid");
+    $('#user_pass_login').val("").removeClass("is-valid is-invalid");
 }

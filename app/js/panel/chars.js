@@ -41,58 +41,66 @@ let chartInstances = {};
 
 export const createCharts = (data) => {
   const chartsContainer = document.getElementById('charts-container');
+
+  // Verificar si los datos son válidos
+  if (!Array.isArray(data) || data.length === 0) {
+    console.warn('No hay datos disponibles para generar gráficas.');
+    chartsContainer.innerHTML = '<p class="text-muted text-center">No hay datos disponibles para mostrar.</p>';
+    return;
+  }
+
   chartsContainer.innerHTML = '';
 
   const groupedData = data.reduce((acc, reading) => {
-      if (!acc[reading.Identifier]) {
-          acc[reading.Identifier] = {
-              pot_name: reading.pot_name,
-              pot_location: reading.pot_location,
-              readings: {} 
-          };
-      }
+    if (!acc[reading.Identifier]) {
+      acc[reading.Identifier] = {
+        pot_name: reading.pot_name,
+        pot_location: reading.pot_location,
+        readings: {}
+      };
+    }
 
-      acc[reading.Identifier].readings[reading.sensor_name] = reading.value;
-      return acc;
+    acc[reading.Identifier].readings[reading.sensor_name] = reading.value;
+    return acc;
   }, {});
 
   Object.values(groupedData).forEach((maceta, macetaIndex) => {
-      const potName = maceta.pot_name;
-      const potIdentifier = Object.keys(groupedData)[macetaIndex]; 
+    const potName = maceta.pot_name;
+    const potIdentifier = Object.keys(groupedData)[macetaIndex];
 
-      const chartData = [
-          { label: 'Humedad Ambiental', value: maceta.readings['ambient_humidity'], color: '#4A90E2' },
-          { label: 'Temperatura Ambiental', value: maceta.readings['ambient_temperature'], color: '#FF6F61' },
-          { label: 'Intensidad de Luz', value: maceta.readings['light_intensity'], color: '#FFD700' },
-          { label: 'Humedad del Suelo', value: maceta.readings['soil_humidity'], color: '#50C878' }
-      ];
+    const chartData = [
+      { label: 'Humedad Ambiental', value: maceta.readings['ambient_humidity'], color: '#4A90E2' },
+      { label: 'Temperatura Ambiental', value: maceta.readings['ambient_temperature'], color: '#FF6F61' },
+      { label: 'Intensidad de Luz', value: maceta.readings['light_intensity'], color: '#FFD700' },
+      { label: 'Humedad del Suelo', value: maceta.readings['soil_humidity'], color: '#50C878' }
+    ];
 
-      const validData = chartData.filter(item => item.value !== null && !isNaN(item.value));
+    const validData = chartData.filter(item => item.value !== null && !isNaN(item.value));
 
-      if (validData.length === 0) {
-          console.warn(`No hay datos válidos para la maceta: ${potIdentifier}`);
-          return;
-      }
+    if (validData.length === 0) {
+      console.warn(`No hay datos válidos para la maceta: ${potIdentifier}`);
+      return;
+    }
 
-      const macetaSection = document.createElement('div');
-      macetaSection.className = 'col-12';
-      macetaSection.innerHTML = `<h3 class="mt-4">Maceta: ${potName}</h3>`;
+    const macetaSection = document.createElement('div');
+    macetaSection.className = 'col-12';
+    macetaSection.innerHTML = `<h3 class="mt-4">Maceta: ${potName}</h3>`;
 
-      const row = document.createElement('div');
-      row.className = 'row';
+    const row = document.createElement('div');
+    row.className = 'row';
 
-      validData.forEach((item, index) => {
-        const sensorName = Object.keys(maceta.readings).find(key => {
-          const labelMapping = {
-            'Humedad Ambiental': 'ambient_humidity',
-            'Temperatura Ambiental': 'ambient_temperature',
-            'Intensidad de Luz': 'light_intensity',
-            'Humedad del Suelo': 'soil_humidity'
-          };
-          return labelMapping[item.label] === key;
-        });
-      
-        const chartHTML = `
+    validData.forEach((item, index) => {
+      const sensorName = Object.keys(maceta.readings).find(key => {
+        const labelMapping = {
+          'Humedad Ambiental': 'ambient_humidity',
+          'Temperatura Ambiental': 'ambient_temperature',
+          'Intensidad de Luz': 'light_intensity',
+          'Humedad del Suelo': 'soil_humidity'
+        };
+        return labelMapping[item.label] === key;
+      });
+
+      const chartHTML = `
         <div class="col-xl-6 mb-4">
             <div class="card">
                 <div class="card-body">
@@ -112,54 +120,59 @@ export const createCharts = (data) => {
                 </div>
             </div>
         </div>
-        `;
-        row.insertAdjacentHTML('beforeend', chartHTML);
-      });
-      macetaSection.appendChild(row);
-      chartsContainer.appendChild(macetaSection);
+      `;
+      row.insertAdjacentHTML('beforeend', chartHTML);
+    });
 
-      validData.forEach((item, index) => {
-          const ctx = document.getElementById(`chart-${macetaIndex}-${index}`).getContext('2d');
-          const chartInstance = new Chart(ctx, {
-              type: "doughnut",
-              data: {
-                  labels: [item.label, "Restante"],
-                  datasets: [
-                      {
-                          data: [item.value, 100 - item.value],
-                          backgroundColor: [item.color, '#e9ecef'],
-                          borderColor: "transparent",
-                          borderWidth: 3,
-                      },
-                  ],
-              },
-              options: {
-                  maintainAspectRatio: false,
-                  cutout: '60%',
-                  plugins: {
-                      legend: { display: false },
-                      title: {
-                          display: true,
-                          text: `${item.label} - ${potName}`,
-                          font: { size: 18 },
-                          color: "#b0ada1",
-                      },
-                  },
-              },
-              plugins: [{
-                  id: 'doughnut-center-text',
-              }],
-          });
+    macetaSection.appendChild(row);
+    chartsContainer.appendChild(macetaSection);
 
-          if (!chartInstances[potIdentifier]) {
-              chartInstances[potIdentifier] = {};
-          }
-          chartInstances[potIdentifier][item.label] = chartInstance;
+    validData.forEach((item, index) => {
+      const ctx = document.getElementById(`chart-${macetaIndex}-${index}`).getContext('2d');
+      const chartInstance = new Chart(ctx, {
+        type: "doughnut",
+        data: {
+          labels: [item.label, "Restante"],
+          datasets: [{
+            data: [item.value, 100 - item.value],
+            backgroundColor: [item.color, '#e9ecef'],
+            borderColor: "transparent",
+            borderWidth: 3,
+          }],
+        },
+        options: {
+          maintainAspectRatio: false,
+          cutout: '60%',
+          plugins: {
+            legend: { display: false },
+            title: {
+              display: true,
+              text: `${item.label} - ${potName}`,
+              font: { size: 18 },
+              color: "#b0ada1",
+            },
+          },
+        },
+        plugins: [{
+          id: 'doughnut-center-text',
+        }],
       });
+
+      if (!chartInstances[potIdentifier]) {
+        chartInstances[potIdentifier] = {};
+      }
+      chartInstances[potIdentifier][item.label] = chartInstance;
+    });
   });
-
 };
+
 export const updateCharts = (data) => {
+  if (!data || !Array.isArray(data) || data.length === 0) {
+    return;
+  }
+  if (!window.chartInstances || Object.keys(chartInstances).length === 0) {
+    return;
+  }
 
   const groupedData = data.reduce((acc, reading) => {
     if (!acc[reading.Identifier]) {
@@ -184,11 +197,15 @@ export const updateCharts = (data) => {
     ];
 
     chartData.forEach(item => {
-      if (chartInstances[potIdentifier] && chartInstances[potIdentifier][item.label]) {
+      if (
+        chartInstances[potIdentifier] &&
+        chartInstances[potIdentifier][item.label]
+      ) {
         const chartInstance = chartInstances[potIdentifier][item.label];
         chartInstance.data.datasets[0].data = [item.value, 100 - item.value];
         chartInstance.update(0);
       } else {
+        console.warn(`updateCharts: No existe el gráfico para ${item.label} de la maceta ${potIdentifier}`);
       }
     });
   });

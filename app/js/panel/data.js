@@ -13,10 +13,11 @@ export const logOutUser = () => {
             if (response.status) {
                 history.pushState(null, "", "login");
                 window.location.replace("login");
+                localStorage.clear();
                 setTimeout(() => {
                     window.history.pushState(null, "", "login");
                 }, 500);
-            } else {
+            } else {   
                 console.error("Error al cerrar sesión:", response.msg);
             }
         },
@@ -33,7 +34,7 @@ window.onpopstate = function () {
 //Obtener los detalles del usuario
 export const userDetails = (data) => {
     $.ajax({
-        url: "php/api/",
+        url: "/app/php/api/",
         method: "POST",
         data: JSON.stringify({
             request: "user_details",
@@ -302,8 +303,6 @@ export const set_notification = (data) => {
         contentType: "application/json",
         dataType: "json",
         success: function (respuesta) {
-            console.log(respuesta.data);
-            // Llamar a función para mostrar notificaciones
             displaySensorAlerts(respuesta.data);
         },
         error: function (xhr, status, error) {

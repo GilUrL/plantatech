@@ -34,3 +34,31 @@ export const cssRegex = (isValid, input, value) => {
     });
     return allValid;
 };
+
+// Verifica los campos y el captcha
+export const checkFormAndCaptcha = () => {
+    let allValid = true;
+
+    $('#add-users input:visible:enabled').each(function () {
+        if ($(this).val().trim() === '' || $(this).hasClass('is-invalid')) {
+            allValid = false;
+        }
+    });
+
+    let recaptchaValue = $('#g-recaptcha-response').val();
+    if (!recaptchaValue) {
+        allValid = false;
+    }
+
+    $('#user_registration').prop('disabled', !allValid);
+};
+
+// Callback de éxito del captcha
+window.onCaptchaSuccess = function () {
+    checkFormAndCaptcha(); // Se llama cuando el usuario hace clic y resuelve el captcha
+};
+
+// Callback de expiración del captcha
+window.onCaptchaExpired = function () {
+    $('#user_registration').prop('disabled', true);
+};
