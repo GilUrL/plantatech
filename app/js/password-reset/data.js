@@ -31,6 +31,7 @@ export const emailResetPassword = (data) => {
 
 export const resetPassword = (data) => {
     $("#loadingSpinner").removeClass("d-none").addClass("d-block");
+
     $.ajax({
         url: "php/api/",
         method: "POST",
@@ -44,7 +45,7 @@ export const resetPassword = (data) => {
             if (respuesta) {
                 messages(respuesta);
                 setTimeout(() => {
-                    window.location.href = 'login';
+                    window.location.replace("login");
                 }, 2000);
             }
         },
@@ -56,7 +57,6 @@ export const resetPassword = (data) => {
             messages(status);
         },
         complete: function () {
-            // Ocultar el spinner
             $("#loadingSpinner").removeClass("d-block").addClass("d-none");
         }
     });
