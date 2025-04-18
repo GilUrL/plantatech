@@ -282,8 +282,21 @@ class UserModel extends DatabaseDB
     public function detailsUser()
     {
         try {
-            $sql = "SELECT first_name, last_name, email,`status`, cod_user, created_at
-            FROM user WHERE cod_user = :cod_user";
+            $sql = "SELECT 
+              u.id_user,
+              u.first_name,
+              u.last_name,
+              u.email,
+              u.status,
+              u.cod_user,
+              u.created_at,
+              COUNT(p.id_pot) AS total_pots,
+              COUNT(a.id_alarm) AS total_alarm
+            FROM user u
+            LEFT JOIN pot p ON u.id_user = p.id_user
+            LEFT JOIN alarm a ON u.id_user = a.id_user
+            WHERE u.cod_user = :cod_user
+            GROUP BY u.id_user;";
             $execute = $this->connBD()->prepare($sql);
             $values = array(':cod_user' => $this->cod_user);
             $execute->execute($values);
